@@ -1,0 +1,82 @@
+* {
+    font-family: "JetBrainsMono Nerd Font", "Font Awesome 6 Free";
+    font-size: 12px; /* Shrunk font */
+    font-weight: bold;
+}
+
+window#waybar {
+    background-color: rgba(30, 30, 46, 0.85);
+    border: 1px solid rgba(137, 180, 250, 0.3);
+    border-radius: 16px; /* Tighter corners */
+    color: #cdd6f4;
+}
+
+.modules-left, .modules-right {
+    padding: 0 12px; /* Tighter padding */
+}
+
+/* --- THE EXPANDING PILL WORKSPACES --- */
+#workspaces {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#workspaces button {
+    min-height: 5px; /* Flatter, more minimal dash */
+    min-width: 10px;  
+    padding: 0;
+    border-radius: 2000px;
+    background-color: rgba(255, 255, 255, 0.2);
+    margin: 0 4px;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+#workspaces button:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+    min-width: 10px;
+}
+
+#workspaces button.active {
+    min-width: 24px; /* Shorter stretch */
+    background-color: #89b4fa;
+    box-shadow: 0px 0px 6px rgba(137, 180, 250, 0.6);
+}
+
+/* --- CENTER MPD & CAVA --- */
+#mpd {
+    color: #cba6f7;
+}
+
+#cava {
+    color: #89b4fa;
+}
+
+/* --- RIGHT HARDWARE & TIME --- */
+#pulseaudio,
+#network,
+#battery,
+#clock {
+    margin-right: 5px; /* Tighter spacing */
+}
+
+#pulseaudio { color: #f9e2af; }
+#network { color: #89dceb; }
+#battery { color: #a6e3a1; }
+#clock { color: #cdd6f4; margin-left: 6px; }
+
+#battery.warning { color: #fab387; }
+#battery.critical {
+    color: #f38ba8;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@keyframes blink {
+    to {
+        background-color: transparent;
+        color: #f38ba8;
+    }
+}

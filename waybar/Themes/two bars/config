@@ -1,0 +1,112 @@
+[
+    // --- TOP BAR (Menu, Clock, Control Center) ---
+    {
+        "name": "topbar",
+        "layer": "top",
+        "position": "top",
+        "height": 34,
+        "margin-top": 8,
+        "margin-left": 12,
+        "margin-right": 12,
+        "spacing": 0,
+        "modules-left": [
+            "custom/arch"
+        ],
+        "modules-center": [
+            "clock"
+        ],
+        "modules-right": [
+            "pulseaudio",
+            "backlight",
+            "battery",
+            "network",
+            "power-profiles-daemon",
+            "custom/notification"
+        ],
+
+        "custom/arch": {
+            "format": "  ",
+            "tooltip": false,
+            "on-click": "kitty"
+        },
+        "clock": {
+            "format": "{:%I:%M %p}",
+            "format-alt": "{:%A, %B %d}",
+            "tooltip": false
+        },
+        "pulseaudio": {
+            "format": "{icon}  {volume}%",
+            "format-muted": "",
+            "format-icons": {
+                "default": ["", "", ""]
+            },
+            "on-click": "pavucontrol"
+        },
+        "backlight": {
+            "format": "{icon}  {percent}%",
+            "format-icons": ["", "", "", "", "", "", "", "", ""]
+        },
+        "battery": {
+            "states": {
+                "warning": 30,
+                "critical": 15
+            },
+            "format": "{icon}  {capacity}%",
+            "format-charging": "  {capacity}%",
+            "format-plugged": "  {capacity}%",
+            "format-icons": ["", "", "", "", ""]
+        },
+        "network": {
+            "format-wifi": " ",
+            "format-ethernet": "󰈀 ",
+            "format-disconnected": "⚠",
+            "tooltip-format": "{essid}"
+        },
+        "power-profiles-daemon": {
+            "format": "{icon}",
+            "format-icons": {
+                "default": "",
+                "performance": "",
+                "balanced": "",
+                "power-saver": ""
+            }
+        },
+        "custom/notification": {
+            "tooltip": false,
+            "format": "{icon}",
+            "format-icons": {
+                "notification": "<span foreground='red'><sup></sup></span>",
+                "none": "",
+                "dnd-notification": "<span foreground='red'><sup></sup></span>",
+                "dnd-none": ""
+            },
+            "return-type": "json",
+            "exec-if": "which swaync-client",
+            "exec": "swaync-client -swb",
+            "on-click": "swaync-client -t -sw",
+            "escape": true
+        }
+    },
+
+    // --- BOTTOM DOCK (Pure App Launcher) ---
+    {
+        "name": "bottomdock",
+        "layer": "top",
+        "position": "bottom",
+        "height": 46,
+        "margin-bottom": 12,
+        "spacing": 0,
+        "modules-center": [
+            "wlr/taskbar"
+        ],
+
+        "wlr/taskbar": {
+            "format": "{icon}",
+            "icon-size": 28, // Bigger icons for the dock feel
+            "icon-theme": "Papirus", 
+            "tooltip-format": "{title}",
+            "on-click": "activate",
+            "on-click-middle": "close"
+        }
+    }
+]

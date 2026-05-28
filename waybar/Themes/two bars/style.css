@@ -1,0 +1,96 @@
+* {
+    font-family: "JetBrainsMono Nerd Font", "Font Awesome 6 Free";
+    font-size: 13px;
+    font-weight: bold;
+}
+
+/* --- GLOBAL WAYBAR INVISIBILITY --- */
+window#waybar {
+    background-color: transparent;
+}
+
+/* --- TOP BAR PILLS --- */
+/* This creates 3 separated, clean floating blocks at the top */
+window#waybar.topbar .modules-left,
+window#waybar.topbar .modules-center,
+window#waybar.topbar .modules-right {
+    background-color: rgba(30, 30, 46, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 18px;
+    padding: 2px 14px;
+    color: #cdd6f4;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* Top Bar Spacing & Colors */
+window#waybar.topbar #custom-arch {
+    color: #89b4fa;
+    font-size: 18px;
+}
+
+window#waybar.topbar #pulseaudio,
+window#waybar.topbar #backlight,
+window#waybar.topbar #battery,
+window#waybar.topbar #network,
+window#waybar.topbar #power-profiles-daemon,
+window#waybar.topbar #custom-notification {
+    margin: 0 8px; /* Space out the hardware icons */
+}
+
+window#waybar.topbar #pulseaudio { color: #f9e2af; }
+window#waybar.topbar #backlight { color: #89dceb; }
+window#waybar.topbar #battery { color: #a6e3a1; }
+window#waybar.topbar #network { color: #89b4fa; }
+window#waybar.topbar #power-profiles-daemon { color: #f38ba8; }
+window#waybar.topbar #custom-notification { 
+    color: #cba6f7; 
+    padding-right: 2px;
+}
+
+/* Battery Blink Animation */
+window#waybar.topbar #battery.critical {
+    color: #f38ba8;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+/* --- BOTTOM DOCK STYLING --- */
+/* Apply styling directly to the center module so it dynamically resizes */
+window#waybar.bottomdock .modules-center {
+    background-color: rgba(30, 30, 46, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+    padding: 4px 12px;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* App Icons inside the Dock */
+window#waybar.bottomdock #taskbar button {
+    padding: 6px 8px;
+    margin: 0 4px;
+    border-radius: 14px;
+    transition: all 0.2s ease;
+}
+
+/* App Icon Hover */
+window#waybar.bottomdock #taskbar button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Active App Highlight (macOS style underline) */
+window#waybar.bottomdock #taskbar button.active {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-bottom: 2px solid #89b4fa;
+    border-radius: 14px 14px 6px 6px; /* Flattens the bottom slightly for the line */
+}
+
+@keyframes blink {
+    to {
+        background-color: #f38ba8;
+        color: #1e1e2e;
+    }
+}

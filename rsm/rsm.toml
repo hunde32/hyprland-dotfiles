@@ -1,0 +1,53 @@
+# RSM Configuration
+global_ignores = [".git", ".DS_Store", "node_modules"]
+
+[[links]]
+target = "~/.config/hypr/"
+source = "~/dotfiles/hyprland/"
+recursive = true
+tags = ["wm", "ui"]
+os = "linux"
+ignore = ["*.bak", "secrets.conf"]
+
+[[links]]
+target = "~/.config/starship.toml"
+source = "~/dotfiles/starship.toml"
+tags = ["shell"]
+host = "archi"
+
+[[links]]
+target = "~/.config/fish"
+source = "~/dotfiles/fish"
+recursive = true
+tags = ["shell"]
+host = "archi"
+
+[[links]]
+target = "~/.config/rsm"
+source = "~/dotfiles/rsm"
+recursive = true
+tags = ["link", "manager"]
+
+[[links]]
+target = "~/.config/mpd"
+source = "~/dotfiles/mpd"
+recursive = true
+tags = ["term"]
+
+[[links]]
+target = "~/.config/kitty"
+source = "~/dotfiles/kitty"
+recursive = true
+tags = ["term"]
+
+[[links]]
+target = "~/.config/cava"
+source = "~/dotfiles/cava"
+recursive = true
+tags = ["music", "ui"]
+
+[[links]]
+target = "~/.config/waybar"
+source = "~/dotfiles/waybar"
+recursive = true
+tags = ["bar", "ui"]
