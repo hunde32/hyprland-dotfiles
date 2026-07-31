@@ -72,6 +72,12 @@ tags = ["ui"]
 
 
 [[links]]
+target = "~/.config/nvim"
+source = "~/dotfiles/nvim"
+recursive = true
+tags = ["editor"]
+
+[[links]]
 target = "~/.config/swaync"
 source = "~/dotfiles/swaync"
 recursive = true
