@@ -1,10 +1,11 @@
 -------------------
 ---- AUTOSTART ----
 -------------------
-hl.on("hyprland.start", function () 
-    hl.exec_cmd("waybar & awww-daemon ")
+hl.on("hyprland.start", function()
+	hl.exec_cmd(
+		"waybar & awww-daemon & swaync & wl-paste --type text --watch cliphist store & wl-paste --type image --watch cliphist store"
+	)
 end)
-
 -------------------------------
 ---- ENVIRONMENT VARIABLES ----
 -------------------------------

@@ -1,3 +1,5 @@
+@import "colors.css";
+
 * {
     font-family: "JetBrainsMono Nerd Font", "Font Awesome 6 Free";
     font-size: 13px;
@@ -14,17 +16,18 @@ window#waybar {
 window#waybar.topbar .modules-left,
 window#waybar.topbar .modules-center,
 window#waybar.topbar .modules-right {
-    background-color: rgba(30, 30, 46, 0.75);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    /* Uses dynamic surface color with 75% opacity */
+    background-color: alpha(@surface, 0.75); 
+    border: 1px solid alpha(@on_surface, 0.08);
     border-radius: 18px;
     padding: 2px 14px;
-    color: #cdd6f4;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+    color: @on_surface;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3); /* Black shadows remain static for depth */
 }
 
 /* Top Bar Spacing & Colors */
 window#waybar.topbar #custom-arch {
-    color: #89b4fa;
+    color: @primary;
     font-size: 18px;
 }
 
@@ -37,19 +40,20 @@ window#waybar.topbar #custom-notification {
     margin: 0 8px; /* Space out the hardware icons */
 }
 
-window#waybar.topbar #pulseaudio { color: #f9e2af; }
-window#waybar.topbar #backlight { color: #89dceb; }
-window#waybar.topbar #battery { color: #a6e3a1; }
-window#waybar.topbar #network { color: #89b4fa; }
-window#waybar.topbar #power-profiles-daemon { color: #f38ba8; }
+/* Mapped to dynamic accents */
+window#waybar.topbar #pulseaudio { color: @secondary; }
+window#waybar.topbar #backlight { color: @tertiary; }
+window#waybar.topbar #battery { color: @primary; }
+window#waybar.topbar #network { color: @secondary; }
+window#waybar.topbar #power-profiles-daemon { color: @tertiary; }
 window#waybar.topbar #custom-notification { 
-    color: #cba6f7; 
+    color: @primary; 
     padding-right: 2px;
 }
 
 /* Battery Blink Animation */
 window#waybar.topbar #battery.critical {
-    color: #f38ba8;
+    color: @error;
     animation-name: blink;
     animation-duration: 0.5s;
     animation-timing-function: linear;
@@ -60,8 +64,8 @@ window#waybar.topbar #battery.critical {
 /* --- BOTTOM DOCK STYLING --- */
 /* Apply styling directly to the center module so it dynamically resizes */
 window#waybar.bottomdock .modules-center {
-    background-color: rgba(30, 30, 46, 0.75);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: alpha(@surface, 0.75);
+    border: 1px solid alpha(@on_surface, 0.1);
     border-radius: 24px;
     padding: 4px 12px;
     box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.4);
@@ -77,20 +81,20 @@ window#waybar.bottomdock #taskbar button {
 
 /* App Icon Hover */
 window#waybar.bottomdock #taskbar button:hover {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: alpha(@on_surface, 0.1);
     box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
 }
 
 /* Active App Highlight (macOS style underline) */
 window#waybar.bottomdock #taskbar button.active {
-    background-color: rgba(255, 255, 255, 0.15);
-    border-bottom: 2px solid #89b4fa;
+    background-color: alpha(@on_surface, 0.15);
+    border-bottom: 2px solid @primary; /* Primary color for the active indicator */
     border-radius: 14px 14px 6px 6px; /* Flattens the bottom slightly for the line */
 }
 
 @keyframes blink {
     to {
-        background-color: #f38ba8;
-        color: #1e1e2e;
+        background-color: @error;
+        color: @surface;
     }
 }

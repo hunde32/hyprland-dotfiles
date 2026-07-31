@@ -1,24 +1,32 @@
--------------------------
+--------------------------
 ---- LAYER EXCEPTIONS ----
--------------------------
+--------------------------
 hl.layer_rule({
-    name  = "waybar-slide",
-    match = { namespace = "^waybar$" },
-    animation = "slide top",
+    name        = "waybar-blur",
+    match       = { namespace = "waybar" },
+    blur        = true,
+    ignore_alpha = 0.5,
 })
 
 hl.layer_rule({
-    name  = "swaync-slide",
-    match = { namespace = "^swaync$" },
-    animation = "slide right",
+    name         = "swaync-blur-effects-second",
+    match        = { namespace = "swaync-control-center" },
+    blur         = true,
+    ignore_alpha = 0.5,
 })
 
+hl.layer_rule({
+    name         = "swaync-blur-effects-first",
+    match        = { namespace = "swaync-notification-window" },
+    blur         = true,
+    ignore_alpha = 0.5,
+})
 ----------------------
 ---- WINDOW RULES ----
 ----------------------
 hl.window_rule({
-    name  = "suppress-maximize-events",
-    match = { class = ".*" },
+    name           = "suppress-maximize-events",
+    match          = { class = ".*" },
     suppress_event = "maximize",
 })
 

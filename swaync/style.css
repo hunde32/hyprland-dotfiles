@@ -1,0 +1,135 @@
+/* Import your Matugen generated palette */
+@import url("colors.css");
+
+* {
+    font-family: "JetBrainsMono Nerd Font";
+    font-weight: 500;
+}
+
+.control-center {
+    background: alpha(@background, 0.5); 
+    border: 2px solid alpha(@primary, 0.6);
+    border-radius: 16px;
+    padding: 10px;
+}
+
+/* Header & Title */
+.widget-title {
+    padding: 10px 14px;
+}
+
+.widget-title > label {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: @primary;
+}
+
+.widget-title > button {
+    background: alpha(@background-alt, 0.3);
+    padding: 6px 14px;
+    border-radius: 8px;
+    color: @foreground;
+    border: 1px solid alpha(@foreground, 0.1);
+}
+
+.widget-title > button:hover {
+    background: @error;
+    color: @background;
+}
+
+/* Do Not Disturb Row */
+.widget-dnd {
+    padding: 8px 14px;
+    font-size: 1.1rem;
+    color: @foreground;
+}
+
+.widget-dnd > switch {
+    border-radius: 16px;
+    background: alpha(@background-alt, 0.4);
+    border: 1px solid alpha(@foreground, 0.1);
+}
+
+.widget-dnd > switch:checked {
+    background: @secondary;
+}
+
+/* Volume & Brightness Sliders */
+.widget-volume,
+.widget-backlight {
+    background: alpha(@background-alt, 0.3);
+    padding: 6px 16px;
+    margin: 6px 4px;
+    border-radius: 12px;
+    border: 1px solid alpha(@foreground, 0.1);
+    color: @primary;
+}
+
+.widget-volume trough,
+.widget-backlight trough {
+    background: alpha(@foreground, 0.1);
+    border-radius: 8px;
+    min-height: 8px;
+}
+
+.widget-volume highlight,
+.widget-backlight highlight {
+    background: @primary;
+    border-radius: 8px;
+}
+
+/* Quick Settings Button Grid */
+.widget-buttons-grid {
+    background: transparent;
+    padding: 8px;
+    margin: 5px 0px;
+}
+
+.widget-buttons-grid > flowbox > flowboxchild > button {
+    background: alpha(@background-alt, 0.4);
+    border-radius: 12px;
+    color: @foreground;
+    padding: 14px;
+    border: 1px solid alpha(@foreground, 0.1);
+    margin: 5px;
+}
+
+.widget-buttons-grid > flowbox > flowboxchild > button:checked {
+    background: alpha(@primary, 0.8);
+    color: @background;
+    font-weight: bold;
+}
+
+/* Media Player Widget */
+.widget-mpris {
+    background: alpha(@background-alt, 0.3);
+    padding: 12px;
+    margin: 10px 4px;
+    border-radius: 12px;
+    border: 1px solid alpha(@foreground, 0.1);
+}
+
+.widget-mpris-title {
+    font-weight: bold;
+    color: @primary;
+}
+
+/* Notification Cards */
+.widget-notifications {
+    background: transparent;
+    padding: 5px;
+}
+
+.notification {
+    background: alpha(@background-alt, 0.4);
+    border-radius: 12px;
+    border: 1px solid alpha(@foreground, 0.1);
+    margin: 6px 4px;
+    padding: 12px;
+}
+
+.floating-notifications .notification {
+    background: alpha(@background, 0.5);
+    border: 2px solid @primary;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}

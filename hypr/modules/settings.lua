@@ -1,13 +1,22 @@
 ------------------
 ---- MONITORS ----
 ------------------
+-- 1. Laptop Screen (Primary)
 hl.monitor({
-    output   = "",
-    mode     = "1920x1080@60",
-    position = "auto",
+    output   = "eDP-1",
+    mode     = "1920x1080@60.056",
+    position = "0x0",
     scale    = "1.2",
 })
 
+-- 2. Sony Projector (Mirroring)
+hl.monitor({
+    output   = "HDMI-A-1",
+    mode     = "1920x1080@60.000",
+    position = "0x0",
+    scale    = "1",
+    mirror   = "eDP-1",
+})
 ---------------
 ---- INPUT ----
 ---------------
@@ -34,6 +43,14 @@ hl.device({
 })
 
 -----------------------
+---- DYNAMIC COLOR ----
+-----------------------
+local colors = { primary = "33ccff", secondary = "00ff99", surface = "595959" }
+pcall(function()
+    colors = require("colors")
+end)
+
+-----------------------
 ---- LOOK AND FEEL ----
 -----------------------
 hl.config({
@@ -42,8 +59,8 @@ hl.config({
         gaps_out = 18,
         border_size = 2,
         col = {
-            active_border   = { colors = {"rgba(33ccffee)", "rgba(00ff99ee)"}, angle = 45 },
-            inactive_border = "rgba(595959aa)",
+            active_border   = { colors = {"rgba(" .. colors.primary .. "ee)", "rgba(" .. colors.secondary .. "ee)"}, angle = 45 },
+            inactive_border = "rgba(" .. colors.surface .. "aa)",
         },
         resize_on_border = false,
         allow_tearing = false,
@@ -61,14 +78,19 @@ hl.config({
             color        = 0xee1a1a1a,
         },
         blur = {
-            enabled   = true,
-            size      = 3,
-            passes    = 1,
-            vibrancy  = 0.1696,
+            enabled           = true,
+            size              = 8,
+            passes            = 3,
+            new_optimizations = true,
+            ignore_opacity    = true,
+            xray              = false,
+            vibrancy          = 0.2000,
+            brightness        = 1.0,
+            contrast          = 1.0,
         },
     },
     dwindle = {
-        preserve_split = true, 
+        preserve_split = true,
     },
     master = {
         new_status = "master",
@@ -77,7 +99,7 @@ hl.config({
         fullscreen_on_one_column = true,
     },
     misc = {
-        force_default_wallpaper = -1,  
-        disable_hyprland_logo   = false, 
+        force_default_wallpaper = -1,
+        disable_hyprland_logo   = false,
     },
 })

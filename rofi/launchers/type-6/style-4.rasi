@@ -1,0 +1,198 @@
+@import "~/.config/rofi/colors.rasi"
+@import "~/.config/rofi/current_wallpaper.rasi"
+
+/*****----- Configuration -----*****/
+configuration {
+    modi:                       "drun,run,filebrowser,window";
+    show-icons:                 true;
+    display-drun:               "APPS";
+    display-run:                "RUN";
+    display-filebrowser:        "FILES";
+    display-window:             "WINDOW";
+    drun-display-format:        "{name}";
+    window-format:              "{w} · {c} · {t}";
+}
+
+/*****----- Global Properties -----*****/
+* {
+    font:                        "JetBrainsMono Nerd Font 10";
+    background-color:            transparent; 
+}
+
+/*****----- Main Window -----*****/
+window {
+    transparency:                "real";
+    location:                    center;
+    anchor:                      center;
+    fullscreen:                  false;
+    width:                       1000px;
+    border-radius:               16px; 
+    cursor:                      "default";
+    background-color:            @background;
+    border:                      2px solid;
+    border-color:                @selected; /* Outer border matching your dynamic primary color */
+}
+
+/*****----- Main Box -----*****/
+mainbox {
+    enabled:                     true;
+    spacing:                     0px;
+    orientation:                 horizontal;
+    children:                    [ "imagebox", "listbox" ];
+}
+
+/*****----- Image Box (Left Panel) -----*****/
+imagebox {
+    padding:                     20px;
+    border-radius:               14px 0px 0px 14px;
+    orientation:                 vertical;
+    children:                    [ "inputbar", "dummy", "mode-switcher" ];
+}
+
+/*****----- List Box (Right Panel) -----*****/
+listbox {
+    spacing:                     20px;
+    padding:                     35px;
+    orientation:                 vertical;
+    children:                    [ "message", "listview" ];
+}
+
+dummy {
+    background-color:            transparent;
+}
+
+/*****----- Inputbar -----*****/
+inputbar {
+    enabled:                     true;
+    spacing:                     10px;
+    padding:                     15px;
+    border-radius:               12px;
+    background-color:            @background-alt;
+    text-color:                  @foreground;
+    children:                    [ "textbox-prompt-colon", "entry" ];
+}
+textbox-prompt-colon {
+    enabled:                     true;
+    expand:                      false;
+    str:                         "";
+    text-color:                  inherit;
+}
+entry {
+    enabled:                     true;
+    text-color:                  inherit;
+    cursor:                      text;
+    placeholder:                 "Search...";
+    placeholder-color:           inherit;
+}
+
+/*****----- Mode Switcher -----*****/
+mode-switcher {
+    enabled:                     true;
+    spacing:                     15px;
+    text-color:                  @foreground;
+}
+button {
+    padding:                     12px;
+    border-radius:               12px;
+    background-color:            @background-alt;
+    text-color:                  inherit;
+    cursor:                      pointer;
+}
+button selected {
+    background-color:            @selected;
+    text-color:                  @background; /* Inverts text color for readability */
+}
+
+/*****----- Listview -----*****/
+listview {
+    enabled:                     true;
+    columns:                     1;
+    lines:                       7;
+    cycle:                       true;
+    dynamic:                     true;
+    scrollbar:                   false;
+    layout:                      vertical;
+    reverse:                     false;
+    fixed-height:                true;
+    fixed-columns:               true;
+    
+    /* --- THE LINE FIX --- */
+    border:                      2px solid 0px 0px 0px; /* Changes the ugly dash to a clean solid top line */
+    border-color:                @background-alt; /* Uses your subtle dynamic background color instead of pure white */
+    margin:                      15px 0px 0px 0px; /* Adds breathing room above the line (between it and the mode switcher) */
+    padding:                     15px 0px 0px 0px; /* Adds breathing room below the line (between it and the apps) */
+    
+    spacing:                     8px;
+    text-color:                  @foreground;
+    cursor:                      "default";
+}
+/*****----- Elements -----*****/
+element {
+    enabled:                     true;
+    spacing:                     15px;
+    padding:                     10px;
+    border-radius:               12px;
+    text-color:                  @foreground;
+    cursor:                      pointer;
+}
+
+element normal.normal,
+element alternate.normal {
+    background-color:            transparent;
+    text-color:                  @foreground;
+}
+element normal.urgent,
+element alternate.urgent {
+    background-color:            @urgent;
+    text-color:                  @background;
+}
+element normal.active,
+element alternate.active {
+    background-color:            @active;
+    text-color:                  @background;
+}
+
+/* Selected states */
+element selected.normal {
+    background-color:            @selected;
+    text-color:                  @background; /* Dark text on bright background */
+}
+element selected.urgent {
+    background-color:            @urgent;
+    text-color:                  @background;
+}
+element selected.active {
+    background-color:            @active;
+    text-color:                  @background;
+}
+
+element-icon {
+    background-color:            transparent;
+    size:                        28px; /* Slightly scaled down for alignment */
+    cursor:                      inherit;
+}
+element-text {
+    background-color:            transparent;
+    text-color:                  inherit;
+    cursor:                      inherit;
+    vertical-align:              0.5;
+    horizontal-align:            0.0;
+}
+
+message {
+    background-color:            transparent;
+}
+textbox {
+    padding:                     15px;
+    border-radius:               12px;
+    background-color:            @background-alt;
+    text-color:                  @foreground;
+    vertical-align:              0.5;
+    horizontal-align:            0.0;
+}
+error-message {
+    padding:                     15px;
+    border-radius:               12px;
+    background-color:            @background;
+    text-color:                  @urgent;
+}

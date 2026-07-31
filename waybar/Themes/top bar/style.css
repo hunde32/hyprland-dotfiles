@@ -1,3 +1,5 @@
+@import "colors.css";
+
 * {
     font-family: "JetBrainsMono Nerd Font", "Font Awesome 6 Free";
     font-size: 12px;
@@ -6,7 +8,7 @@
 
 window#waybar {
     background-color: transparent; /* Makes the main bar invisible */
-    color: #cdd6f4;
+    color: @on_surface;
     transition-property: background-color;
     transition-duration: .5s;
 }
@@ -17,7 +19,7 @@ window#waybar {
 .modules-left,
 .modules-center,
 .modules-right {
-    background-color: #1e1e2e;
+    background-color: @surface;
     border-radius: 16px;
     padding: 2px 16px;
     box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.4);
@@ -25,7 +27,7 @@ window#waybar {
 
 /* Adjusting individual module spacing inside the pills */
 #custom-arch {
-    color: #89b4fa;
+    color: @primary;
     font-size: 17px;
     margin-right: 12px;
 }
@@ -33,17 +35,17 @@ window#waybar {
 #workspaces button {
     padding: 0 6px;
     background-color: transparent;
-    color: #a6adc8;
+    color: alpha(@on_surface, 0.6); /* Slightly dimmed for inactive workspaces */
 }
 
 #workspaces button:hover {
     box-shadow: inherit;
     text-shadow: inherit;
-    color: #89b4fa;
+    color: @secondary;
 }
 
 #workspaces button.active {
-    color: #89b4fa;
+    color: @primary;
 }
 
 #custom-notification,
@@ -53,15 +55,15 @@ window#waybar {
 }
 
 #power-profiles-daemon {
-    color: #f9e2af;
+    color: @tertiary;
 }
 
 #clock {
-    color: #cdd6f4;
+    color: @on_surface;
 }
 
 #custom-notification {
-    color: #f38ba8;
+    color: @error;
 }
 
 #pulseaudio,
@@ -72,27 +74,27 @@ window#waybar {
 }
 
 #pulseaudio {
-    color: #89b4fa;
+    color: @primary;
 }
 
 #network {
-    color: #a6e3a1;
+    color: @secondary;
 }
 
 #backlight {
-    color: #f9e2af;
+    color: @tertiary;
 }
 
 #battery {
-    color: #a6e3a1;
+    color: @secondary;
 }
 
 #battery.warning {
-    color: #fab387;
+    color: @tertiary;
 }
 
 #battery.critical {
-    color: #f38ba8;
+    color: @error;
     animation-name: blink;
     animation-duration: 0.5s;
     animation-timing-function: linear;
@@ -102,7 +104,7 @@ window#waybar {
 
 @keyframes blink {
     to {
-        background-color: #f38ba8;
-        color: #1e1e2e;
+        background-color: @error;
+        color: @surface;
     }
 }

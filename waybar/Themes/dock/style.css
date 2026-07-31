@@ -1,3 +1,5 @@
+@import "colors.css";
+
 * {
     font-family: "JetBrainsMono Nerd Font", "Font Awesome 6 Free";
     font-size: 12px; /* Shrunk font */
@@ -5,11 +7,11 @@
 }
 
 window#waybar {
-    background-color: rgba(30, 30, 46, 0.85);
-    border: 1px solid rgba(137, 180, 250, 0.3);
+    /* Using surface color with alpha for transparency */
+    background-color: alpha(@surface, 0.5);
+    border: 1px solid alpha(@primary, 0.3);
     border-radius: 16px; /* Tighter corners */
-    color: #cdd6f4;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4);
+    color: @on_surface;
 }
 
 .modules-left, .modules-right {
@@ -39,17 +41,17 @@ window#waybar {
 
 #workspaces button.active {
     min-width: 24px; /* Shorter stretch */
-    background-color: #89b4fa;
-    box-shadow: 0px 0px 6px rgba(137, 180, 250, 0.6);
+    background-color: @primary;
+    box-shadow: 0px 0px 6px alpha(@primary, 0.6);
 }
 
 /* --- CENTER MPD & CAVA --- */
 #mpd {
-    color: #cba6f7;
+    color: @secondary;
 }
 
 #cava {
-    color: #89b4fa;
+    color: @primary;
 }
 
 /* --- RIGHT HARDWARE & TIME --- */
@@ -57,17 +59,17 @@ window#waybar {
 #network,
 #battery,
 #clock {
-    margin-right: 5px; /* Tighter spacing */
+    margin-right: 6.5px; /* Tighter spacing */
 }
 
-#pulseaudio { color: #f9e2af; }
-#network { color: #89dceb; }
-#battery { color: #a6e3a1; }
-#clock { color: #cdd6f4; margin-left: 6px; }
+#pulseaudio { color: @tertiary; }
+#network { color: @secondary; }
+#battery { color: @primary; }
+#clock { color: @on_surface; margin-left: 6px; }
 
-#battery.warning { color: #fab387; }
+#battery.warning { color: @secondary; }
 #battery.critical {
-    color: #f38ba8;
+    color: @error;
     animation-name: blink;
     animation-duration: 0.5s;
     animation-timing-function: linear;
@@ -78,6 +80,6 @@ window#waybar {
 @keyframes blink {
     to {
         background-color: transparent;
-        color: #f38ba8;
+        color: @error;
     }
 }

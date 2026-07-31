@@ -1,0 +1,58 @@
+@import "~/.config/rofi/colors.rasi"
+
+* {
+    background-color: transparent;
+}
+
+window {
+    transparency: "real";
+    location: center;
+    anchor: center;
+    width: 90%; 
+    border-radius: 16px;
+    border: 2px solid;
+    border-color: @selected;
+    background-color: @background;
+    cursor: "default";
+}
+
+/* --- Main Layout --- */
+mainbox {
+    padding: 20px;
+    children: [ "listview" ]; 
+}
+
+listview {
+    columns: 4; 
+    lines: 1; 
+    spacing: 20px;
+    cycle: true;
+    dynamic: true;
+    scrollbar: false;
+}
+
+/* --- The Individual Thumbnails --- */
+element {
+    padding: 0px; /* Removes inner padding so the border hugs the image */
+    border-radius: 12px;
+    /* THIS IS THE MAGIC: It tells Rofi to ONLY render the image, dropping the text entirely */
+    children: [ "element-icon" ]; 
+    cursor: pointer;
+}
+
+/* Selected State - Adds the clean highlight border from your sample image */
+element selected.normal, 
+element selected.urgent, 
+element selected.active {
+    border: 4px solid;
+    border-color: @selected;
+    background-color: transparent;
+}
+
+element-icon {
+    size: 24em; /* Massive icon size to fill the vertical space of the single row */
+    horizontal-align: 0.5;
+    background-color: transparent;
+    cursor: inherit;
+    border-radius: 8px; /* Slight inner rounding for the image itself */
+}

@@ -3,7 +3,7 @@ global_ignores = [".git", ".DS_Store", "node_modules"]
 
 [[links]]
 target = "~/.config/hypr/"
-source = "~/dotfiles/hyprland/"
+source = "~/dotfiles/hypr/"
 recursive = true
 tags = ["wm", "ui"]
 os = "linux"
@@ -51,3 +51,28 @@ target = "~/.config/waybar"
 source = "~/dotfiles/waybar"
 recursive = true
 tags = ["bar", "ui"]
+
+[[links]]
+target = "~/.config/fastfetch"
+source = "~/dotfiles/fastfetch"
+recursive = true
+tags = ["ui"]
+
+[[links]]
+target = "~/.config/matugen"
+source = "~/dotfiles/matugen"
+recursive = true
+tags = ["ui"]
+
+[[links]]
+target = "~/.config/rofi"
+source = "~/dotfiles/rofi"
+recursive = true
+tags = ["ui"]
+
+
+[[links]]
+target = "~/.config/swaync"
+source = "~/dotfiles/swaync"
+recursive = true
+tags = ["ui"]
