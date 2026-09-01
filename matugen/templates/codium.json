@@ -1,0 +1,17 @@
+{
+  "workbench.colorCustomizations": {
+    "editor.background": "{{colors.background.default.hex}}",
+    "editor.foreground": "{{colors.on_background.default.hex}}",
+    "activityBar.background": "{{colors.surface_container_lowest.default.hex}}",
+    "sideBar.background": "{{colors.surface_container_low.default.hex}}",
+    "sideBar.foreground": "{{colors.on_surface.default.hex}}",
+    "statusBar.background": "{{colors.surface_container.default.hex}}",
+    "statusBar.foreground": "{{colors.on_surface.default.hex}}",
+    "tab.activeBackground": "{{colors.surface_container_high.default.hex}}",
+    "tab.inactiveBackground": "{{colors.surface_container_low.default.hex}}",
+    "terminal.background": "{{colors.background.default.hex}}",
+    "focusBorder": "{{colors.primary.default.hex}}",
+    "button.background": "{{colors.primary.default.hex}}",
+    "button.foreground": "{{colors.on_primary.default.hex}}"
+  }
+}

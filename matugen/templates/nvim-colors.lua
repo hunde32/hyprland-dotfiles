@@ -1,12 +1,12 @@
 local M = {}
 
 M.colors = {
-	fg = "#ece1d4",
+	fg = "{{colors.on_background.default.hex}}",
 	bg = "NONE",
-	primary = "#f0bf6d",
-	secondary = "#dbc3a1",
-	surface = "#4e4539",
-	error = "#ffb4ab",
+	primary = "{{colors.primary.default.hex}}",
+	secondary = "{{colors.secondary.default.hex}}",
+	surface = "{{colors.surface_variant.default.hex}}",
+	error = "{{colors.error.default.hex}}",
 }
 
 function M.apply()
