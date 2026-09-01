@@ -30,7 +30,9 @@ hl.bind(
     wl-copy < "$NAME"
 ]])
 )
+hl.bind(mainMod .. " + X", hl.dsp.exec_cmd("~/.config/rofi/powermenu.sh"))
 -- Clipboard History Clear (Wipe database and active target)
+hl.bind(mainMod .. " + Escape", hl.dsp.exec_cmd("hyprlock"))
 hl.bind(mainMod .. " + SHIFT + C", hl.dsp.exec_cmd("cliphist wipe && wl-copy -c"))
 hl.bind(
 	mainMod .. " + C",
@@ -122,5 +124,13 @@ hl.bind(
     fi
 ]])
 )
-
+hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen())
 hl.bind("F11", hl.dsp.exec_cmd("mpc next"))
+
+--------------------------
+---- PASSTHROUGH MODE ----
+--------------------------
+-- Bypassing the Lua wrapper to inject native submap syntax
+hl.on("hyprland.start", function()
+	hl.exec_cmd("hyprctl keyword source ~/.config/hypr/passthrough.conf")
+end)
