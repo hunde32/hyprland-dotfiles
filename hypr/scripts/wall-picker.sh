@@ -26,26 +26,8 @@ if [ -n "$SELECTED" ]; then
   ln -sf "$FULL_PATH" ~/.cache/current_wallpaper
   echo "imagebox { background-image: url(\"$FULL_PATH\", height); }" >"$ROFI_WALLPAPER_SNIPPET"
 
-  # --- THE SMART COLOR ALGORITHM ---
-  # 1. Calculate the image's average saturation (0.0 to 1.0) using ImageMagick
-  SATURATION=$(magick "$FULL_PATH" -colorspace HSL -channel G -separate -format "%[fx:mean]" info:)
-
-  # 2. Check if the image is mostly desaturated (grayscale/black/white)
-  # A threshold of 0.15 means if the image is less than 15% saturated, it triggers the fallback.
-  IS_DESATURATED=$(echo "$SATURATION < 0.15" | bc -l)
-
-  if [ "$IS_DESATURATED" -eq 1 ]; then
-    # Image lacks color. Pick a random vibrant theme hex to keep things fresh!
-    # Themes: Gruvbox Orange, Tokyo Night Blue, Catppuccin Mauve, Nord Frost, Rose Pine, Mocha Green
-    THEME_COLORS=("#7aa2f7" "#cba6f7" "#88c0d0" "#31748f")
-    RANDOM_HEX=${THEME_COLORS[$RANDOM % ${#THEME_COLORS[@]}]}
-
-    matugen color hex "$RANDOM_HEX" -t scheme-tonal-spot
-  else
-    # Image has good color saturation, let Matugen extract it normally
-    matugen image "$FULL_PATH" -t scheme-tonal-spot --source-color-index 0
-  fi
-  # ---------------------------------
+  # Generate scheme directly matching the wallpaper tones
+  matugen image "$FULL_PATH" -t scheme-tonal-spot
 
   TRANSITIONS=("wave" "fade" "grow")
   RANDOM_TRANSITION=${TRANSITIONS[$RANDOM % ${#TRANSITIONS[@]}]}
