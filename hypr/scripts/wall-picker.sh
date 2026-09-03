@@ -26,8 +26,7 @@ if [ -n "$SELECTED" ]; then
   ln -sf "$FULL_PATH" ~/.cache/current_wallpaper
   echo "imagebox { background-image: url(\"$FULL_PATH\", height); }" >"$ROFI_WALLPAPER_SNIPPET"
 
-  # Generate scheme directly matching the wallpaper tones
-  matugen image "$FULL_PATH" -t scheme-tonal-spot
+  matugen image "$FULL_PATH" -m dark -t scheme-tonal-spot --source-color-index 0
 
   TRANSITIONS=("wave" "fade" "grow")
   RANDOM_TRANSITION=${TRANSITIONS[$RANDOM % ${#TRANSITIONS[@]}]}
@@ -39,12 +38,12 @@ if [ -n "$SELECTED" ]; then
     --transition-pos 0.5,0.5 \
     --transition-bezier 0.65,0,0.35,1
 
-  # Hot-Reload Kitty
   kill -SIGUSR1 $(pgrep kitty)
 
   # Restart Panels & Daemons
   killall waybar && waybar >/dev/null 2>&1 &
   swaync-client -R && swaync-client -rs
+  killall -SIGUSR1 cava
   hyprctl reload
 
   # Hot-Reload VSCodium
@@ -56,7 +55,6 @@ if [ -n "$SELECTED" ]; then
     mv "$TEMP_JSON" "$CODIUM_SETTINGS"
   fi
 
-  # Hot-Reload GTK 3 & GTK 4 Apps
   gsettings set org.gnome.desktop.interface color-scheme 'prefer-light'
   sleep 0.1
   gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
