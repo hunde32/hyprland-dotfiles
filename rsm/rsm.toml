@@ -78,6 +78,12 @@ recursive = true
 tags = ["editor"]
 
 [[links]]
+target = "~/.config/rmpc"
+source = "~/dotfiles/rmpc"
+recursive = true
+tags = ["ui", "rmpc", "music"]
+
+[[links]]
 target = "~/.config/swaync"
 source = "~/dotfiles/swaync"
 recursive = true

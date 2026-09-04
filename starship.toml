@@ -86,13 +86,13 @@ format = "[](bold fg:surface_variant)[󰪢 $duration](bold bg:surface_variant
 # --- THE MATUGEN SAUCE ---
 # In TOML, this must be at the very bottom so it doesn't absorb other variables!
 [palettes.matugen]
-primary = "#f0bf6d"
-on_primary = "#432c00"
-secondary = "#dbc3a1"
-on_secondary = "#3d2e16"
-tertiary = "#b5cea4"
-on_tertiary = "#213618"
-surface_variant = "#4e4539"
-on_surface_variant = "#d2c4b4"
+primary = "#a3c9fe"
+on_primary = "#00315b"
+secondary = "#bbc7db"
+on_secondary = "#263141"
+tertiary = "#d8bde3"
+on_tertiary = "#3c2947"
+surface_variant = "#43474e"
+on_surface_variant = "#c3c6cf"
 error = "#ffb4ab"
-outline = "#9b8f80"
+outline = "#8d9199"

@@ -1,11 +1,11 @@
 local M = {}
 
 M.colors = {
-	fg = "#ece1d4",
+	fg = "#e1e2e8",
 	bg = "NONE",
-	primary = "#f0bf6d",
-	secondary = "#dbc3a1",
-	surface = "#4e4539",
+	primary = "#a3c9fe",
+	secondary = "#bbc7db",
+	surface = "#43474e",
 	error = "#ffb4ab",
 }
 
