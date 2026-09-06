@@ -4,7 +4,7 @@
 (
     address: "127.0.0.1:6600",
     theme: "clean",
-    lyrics_dir: Some("/home/hunde/Music"),   
+    lyrics_dir: Some("~/Music"), 
     volume_step: 5,
     scrolloff: 2,
     wrap_navigation: true,
