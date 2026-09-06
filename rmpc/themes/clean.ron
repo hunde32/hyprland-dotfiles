@@ -1,0 +1,64 @@
+#![enable(implicit_some)]
+#![enable(unwrap_newtypes)]
+#![enable(unwrap_variant_newtypes)]
+(
+    draw_borders: false,
+    show_song_table_header: true,
+    default_album_art_path: None,
+    format_tag_separator: " • ",
+
+    progress_bar: (
+        symbols: ["-", "━", "", "━", ""],
+        elapsed_style: (fg: "cyan", modifiers: "Bold"),
+        thumb_style: (fg: "cyan"),
+    ),
+
+    scrollbar: (
+        symbols: ["│", "█", "▲", "▼"],
+        thumb_style: (fg: "cyan"),
+    ),
+
+    tabs: [
+        (
+            name: "Queue",
+            border_type: None,
+            pane: Split(
+                direction: Horizontal,
+                panes: [
+                    (
+                        size: "60%",
+                        pane: Pane(Queue),
+                    ),
+                    (
+                        size: "40%",
+                        borders: "LEFT",
+                        pane: Split(
+                            direction: Vertical,
+                            panes: [
+                                (
+                                    size: "50%",
+                                    pane: Pane(AlbumArt)
+                                ),
+                                (
+                                    size: "50%",
+                                    borders: "TOP",
+                                    pane: Pane(Lyrics)
+                                ),
+                            ]
+                        )
+                    )
+                ]
+            )
+        ),
+        (
+            name: "Library",
+            border_type: None,
+            pane: Pane(Directories),
+        ),
+        (
+            name: "Playlists",
+            border_type: None,
+            pane: Pane(Playlists),
+        ),
+    ]
+)

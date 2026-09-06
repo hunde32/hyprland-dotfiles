@@ -1,0 +1,15 @@
+#![enable(implicit_some)]
+#![enable(unwrap_newtypes)]
+#![enable(unwrap_variant_newtypes)]
+(
+    address: "127.0.0.1:6600",
+    theme: "clean",
+    lyrics_dir: Some("/home/hunde/Music"),   
+    volume_step: 5,
+    scrolloff: 2,
+    wrap_navigation: true,
+    enable_mouse: true,
+    album_art: (
+        method: Auto,
+    ),
+)
