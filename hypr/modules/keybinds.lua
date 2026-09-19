@@ -20,16 +20,16 @@ hl.bind(mainMod .. " + D", hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + T", hl.dsp.layout("togglesplit"))
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd(browser))
--- Regional Screenshot to Clipboard
+-- Regional Screenshot to Clipboard & File via Grimblast
+
 hl.bind(
 	mainMod .. " + ALT + S",
 	hl.dsp.exec_cmd([[
     mkdir -p ~/Pictures/Screenshots && \
-    NAME=~/Pictures/Screenshots/Screenshot_$(date +%Y%m%d_%H%M%S).png && \
-    grim -g "$(slurp)" "$NAME" && \
-    wl-copy < "$NAME"
+    grimblast --notify copysave area ~/Pictures/Screenshots/Screenshot_$(date +%Y%m%d_%H%M%S).png
 ]])
 )
+
 hl.bind(mainMod .. " + X", hl.dsp.exec_cmd("~/.config/rofi/powermenu.sh"))
 -- Clipboard History Clear (Wipe database and active target)
 hl.bind(mainMod .. " + Escape", hl.dsp.exec_cmd("hyprlock"))
